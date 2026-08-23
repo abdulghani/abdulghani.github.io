@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip
 export type Theme = "system" | "light" | "dark";
 
 const STORAGE_KEY = "theme";
-const ORDER: Theme[] = ["system", "light", "dark"];
+const ORDER: Theme[] = ["light", "dark", "system"];
 
 const COPY: Record<Theme, { icon: typeof Sun; label: string }> = {
   system: { icon: Monitor, label: "Match system theme" },
@@ -24,9 +24,9 @@ export function applyTheme(theme: Theme) {
 }
 
 export function ThemeToggle() {
-  // Starts as "system" on the server-rendered HTML, then syncs on mount so the
-  // markup never depends on browser-only state.
-  const [theme, setTheme] = useState<Theme>("system");
+  // Light is the default; a stored choice is picked up on mount so the
+  // pre-rendered markup never depends on browser-only state.
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;

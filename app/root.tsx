@@ -21,8 +21,8 @@ export const links: Route.LinksFunction = () => [
 ];
 
 // Applies the stored theme before first paint so the page never flashes the
-// wrong palette during hydration.
-const themeScript = `(function(){try{var t=localStorage.getItem("theme")||"system";var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
+// wrong palette during hydration. Light is the default until someone picks.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme")||"light";var d=t==="dark"||(t==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);document.documentElement.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
