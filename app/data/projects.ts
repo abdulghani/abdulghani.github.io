@@ -1,13 +1,14 @@
 export type Project = {
   slug: string;
   name: string;
-  kind: "Interactive prototype" | "Case study";
+  kind: "Interactive prototype";
   year: string;
   summary: string;
   role: string;
   stack: string[];
-  /** Set when the project has a page of its own. */
-  href?: string;
+  href: string;
+  thumbnail: string;
+  thumbnailAlt: string;
 };
 
 export const projects: Project[] = [
@@ -21,36 +22,9 @@ export const projects: Project[] = [
     role: "Design port, front-end",
     stack: ["React", "TypeScript", "Tailwind", "useReducer"],
     href: "/portfolio/task-manager",
-  },
-  {
-    slug: "bank-aggregation-api",
-    name: "Bank aggregation API",
-    kind: "Case study",
-    year: "2022 — 2025",
-    summary:
-      "Corporate treasury platform aggregating several banks and eleven services behind one REST API. Request signing, encryption and certificate-based auth to meet bank security standards; sequential processing reworked to run in parallel.",
-    role: "Senior back-end engineer at Necto",
-    stack: ["Node.js", "REST", "Cryptography", "CI/CD"],
-  },
-  {
-    slug: "graphql-microservices",
-    name: "GraphQL microservice split",
-    kind: "Case study",
-    year: "2021 — 2022",
-    summary:
-      "Broke a monolithic API into domain-separated services on NATS, each deployed independently. Auto-scaling took server instances from thousands to hundreds while raising peak traffic capacity by 200%.",
-    role: "Senior back-end engineer at Pawjourr",
-    stack: ["GraphQL", "Nest.js", "NATS", "AWS", "Azure"],
-  },
-  {
-    slug: "serverless-retail",
-    name: "Serverless retail services",
-    kind: "Case study",
-    year: "2020 — 2021",
-    summary:
-      "Led a mobile retail platform's backend from a single Express service into serverless functions, with ORM tooling for consistent data access and a CircleCI pipeline covering both.",
-    role: "Lead back-end engineer at Kaddra",
-    stack: ["Serverless", "Express", "CircleCI", "ORM"],
+    thumbnail: "/task-manager.jpg",
+    thumbnailAlt:
+      "The prototype's home screen on a phone: a week planner with Thursday selected and a high-priority task card.",
   },
 ];
 

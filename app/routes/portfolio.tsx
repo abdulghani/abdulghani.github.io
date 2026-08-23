@@ -13,7 +13,7 @@ export function meta(_: Route.MetaArgs) {
     {
       name: "description",
       content:
-        "Selected work by Abdul Ghani: an interactive task-manager prototype plus case studies from bank API aggregation, GraphQL microservices and serverless retail platforms.",
+        "Interactive work by Abdul Ghani, starting with a mobile task-manager design rebuilt as a working prototype.",
     },
   ];
 }
@@ -22,76 +22,68 @@ export default function Portfolio() {
   return (
     <PageShell>
       <section className="pb-14">
-        <SectionHeading title="Work" meta={`${projects.length} projects`} />
+        <SectionHeading title="Work" meta={projects.length === 1 ? "1 project" : `${projects.length} projects`} />
 
         <p className="mb-8 text-xl leading-[1.55] text-balance">
-          Backend systems I owned, and one front-end piece built to show what a static design looks
-          like once every screen is wired to real state.
+          Things you can open and use. Backend work I owned in production is described under{" "}
+          <Link to="/#work" className="text-primary underline-offset-4 hover:underline">
+            Experience
+          </Link>
+          .
         </p>
 
-        <ul className="flex flex-col gap-px overflow-hidden rounded-sm border bg-border">
-          {projects.map((project) => {
-            const body = (
-              <>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h3 className="font-display text-xl font-semibold tracking-[-0.02em]">
-                    {project.name}
-                    {project.href && (
+        <ul className="flex flex-col gap-4">
+          {projects.map((project) => (
+            <li key={project.slug}>
+              <Link
+                to={project.href}
+                className="group block overflow-hidden rounded-sm border bg-card transition-colors hover:bg-accent"
+              >
+                <img
+                  src={project.thumbnail}
+                  alt={project.thumbnailAlt}
+                  width={960}
+                  height={720}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full border-b object-cover sm:aspect-[16/9] sm:object-top"
+                />
+
+                <div className="px-5 py-5">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="font-display text-xl font-semibold tracking-[-0.02em]">
+                      {project.name}
                       <ArrowUpRight
                         aria-hidden="true"
                         className="ml-1 inline size-4 -translate-y-0.5 text-primary transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-1"
                       />
-                    )}
-                  </h3>
-                  <p className="font-mono text-[0.68rem] tracking-[0.09em] text-muted-foreground uppercase">
-                    {project.year}
-                  </p>
-                </div>
+                    </h3>
+                    <p className="font-mono text-[0.68rem] tracking-[0.09em] text-muted-foreground uppercase">
+                      {project.year}
+                    </p>
+                  </div>
 
-                <p className="mt-0.5 font-mono text-sm text-muted-foreground">{project.role}</p>
-                <p className="mt-3 text-[0.98rem] leading-relaxed">{project.summary}</p>
+                  <p className="mt-0.5 font-mono text-sm text-muted-foreground">{project.role}</p>
+                  <p className="mt-3 text-[0.98rem] leading-relaxed">{project.summary}</p>
 
-                <div className="mt-4 flex flex-wrap items-center gap-1.5">
-                  <Badge
-                    variant={project.href ? "default" : "outline"}
-                    className="rounded-sm font-mono text-[0.66rem] tracking-[0.05em]"
-                  >
-                    {project.kind}
-                  </Badge>
-                  {project.stack.map((item) => (
-                    <Badge
-                      key={item}
-                      variant="outline"
-                      className="rounded-sm bg-card font-mono text-[0.66rem] tracking-[0.05em] text-muted-foreground"
-                    >
-                      {item}
+                  <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                    <Badge className="rounded-sm font-mono text-[0.66rem] tracking-[0.05em]">
+                      {project.kind}
                     </Badge>
-                  ))}
+                    {project.stack.map((item) => (
+                      <Badge
+                        key={item}
+                        variant="outline"
+                        className="rounded-sm bg-card font-mono text-[0.66rem] tracking-[0.05em] text-muted-foreground"
+                      >
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
-              </>
-            );
-
-            return (
-              <li key={project.slug} className="bg-card">
-                {project.href ? (
-                  <Link
-                    to={project.href}
-                    className="group block px-5 py-5 transition-colors hover:bg-accent"
-                  >
-                    {body}
-                  </Link>
-                ) : (
-                  <div className="px-5 py-5">{body}</div>
-                )}
-              </li>
-            );
-          })}
+              </Link>
+            </li>
+          ))}
         </ul>
-
-        <p className="mt-6 font-mono text-xs text-muted-foreground">
-          Case studies describe production work under NDA — no public demo, happy to walk through
-          the architecture.
-        </p>
       </section>
     </PageShell>
   );
