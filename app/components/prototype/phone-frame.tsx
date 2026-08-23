@@ -8,9 +8,11 @@ import { cn } from "~/lib/utils";
 export function PhoneFrame({
   children,
   className,
+  time = "9:41",
 }: {
   children: React.ReactNode;
   className?: string;
+  time?: string;
 }) {
   return (
     <div
@@ -20,7 +22,7 @@ export function PhoneFrame({
       )}
     >
       <div className="relative flex h-[46.5rem] max-h-[80dvh] flex-col overflow-hidden rounded-[2.25rem] bg-[var(--app-bg)] text-[var(--app-fg)]">
-        <StatusBar />
+        <StatusBar time={time} />
         <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
         <div className="flex justify-center pt-1 pb-2">
           <span aria-hidden="true" className="h-1 w-32 rounded-full bg-[var(--app-fg)]/25" />
@@ -30,10 +32,10 @@ export function PhoneFrame({
   );
 }
 
-function StatusBar() {
+function StatusBar({ time }: { time: string }) {
   return (
     <div className="flex shrink-0 items-center justify-between px-7 pt-3 pb-1 text-[0.8rem] font-semibold">
-      <span>9:41</span>
+      <span>{time}</span>
       <span
         aria-hidden="true"
         className="absolute left-1/2 top-2 h-7 w-24 -translate-x-1/2 rounded-full bg-black"

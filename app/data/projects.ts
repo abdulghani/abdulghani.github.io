@@ -40,6 +40,20 @@ export const projects: Project[] = [
     thumbnailAlt:
       "The wallet prototype on a phone: a balance, a lime payment card and a list of accounts.",
   },
+  {
+    slug: "finance",
+    name: "Finance",
+    kind: "Interactive prototype",
+    year: "2026",
+    summary:
+      "A personal-finance app rebuilt from a four-screen design: a spend chart you pick months on, subscriptions you can pause, transactions filtered by account, and a savings target that answers to all of it. Pausing a plan moves the numbers on three other screens.",
+    role: "Design port, front-end",
+    stack: ["React", "TypeScript", "Tailwind", "SVG chart"],
+    href: "/portfolio/finance",
+    thumbnail: "/finance.jpg",
+    thumbnailAlt:
+      "The finance prototype on a phone: a total-spend card with a two-line chart, and income and expense tiles.",
+  },
 ];
 
 export function findProject(slug: string) {

@@ -9,14 +9,18 @@ export function PrototypeStage({
   palette,
   onReset,
   children,
+  time,
 }: {
   palette: string;
   onReset: () => void;
   children: React.ReactNode;
+  time?: string;
 }) {
   return (
     <div className="flex flex-col items-center gap-4">
-      <PhoneFrame className={palette}>{children}</PhoneFrame>
+      <PhoneFrame className={palette} time={time}>
+        {children}
+      </PhoneFrame>
       <button
         type="button"
         onClick={onReset}
