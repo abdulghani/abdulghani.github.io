@@ -11,7 +11,7 @@ export function PhoneFrame({
   return (
     <div
       className={cn(
-        "task-app relative w-full max-w-[23.5rem] rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
+        "task-app relative w-[23.5rem] max-w-full shrink-0 rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
         className,
       )}
     >
