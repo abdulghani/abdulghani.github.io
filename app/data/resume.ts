@@ -21,7 +21,6 @@ export const contacts = [
   { label: "Email", value: "contact.abdulghani@gmail.com", href: "mailto:contact.abdulghani@gmail.com" },
   { label: "LinkedIn", value: "linkedin.com/in/itsabdulghani", href: "https://linkedin.com/in/itsabdulghani" },
   { label: "GitHub", value: "github.com/abdulghani", href: "https://github.com/abdulghani" },
-  { label: "WhatsApp", value: "+62 812 2055 5782", href: "https://wa.me/+6281220555782" },
 ] as const;
 
 export const sectionIds = ["about", "work", "stack", "education"] as const;

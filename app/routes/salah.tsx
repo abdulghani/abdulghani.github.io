@@ -6,7 +6,7 @@ import { en } from "~/i18n/content/en";
 export function meta(_: Route.MetaArgs) {
   const copy = en.projects["salah"];
   return [
-    { title: `${copy.name} — ${en.portfolio.kind}` },
+    { title: `${copy.name} — ${copy.kind}` },
     { name: "description", content: copy.summary },
   ];
 }
