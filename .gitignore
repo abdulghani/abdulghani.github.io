@@ -1,3 +1,10 @@
+.DS_Store
+.env
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
 # Source documents, not for publication
 *.pdf
-.DS_Store
