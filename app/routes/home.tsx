@@ -8,21 +8,24 @@ import { About } from "~/components/sections/about";
 import { Education } from "~/components/sections/education";
 import { Experience } from "~/components/sections/experience";
 import { Stack } from "~/components/sections/stack";
-import { profile } from "~/data/resume";
+import { en } from "~/i18n/content/en";
+import { useContent } from "~/i18n/use-content";
+import { useDocumentMeta } from "~/i18n/use-document-meta";
 
 export function meta(_: Route.MetaArgs) {
-  const description = `Portfolio of ${profile.name}, ${profile.title.toLowerCase()} in ${profile.location} building REST and GraphQL services, cloud infrastructure and CI/CD.`;
-
   return [
-    { title: `${profile.name} — Back-end Engineer` },
-    { name: "description", content: description },
-    { property: "og:title", content: `${profile.name} — ${profile.title}` },
-    { property: "og:description", content: description },
+    { title: en.meta.home.title },
+    { name: "description", content: en.meta.home.description },
+    { property: "og:title", content: en.meta.home.title },
+    { property: "og:description", content: en.meta.home.description },
     { property: "og:type", content: "profile" },
   ];
 }
 
 export default function Home() {
+  const { t } = useContent();
+  useDocumentMeta(t.meta.home.title, t.meta.home.description);
+
   return (
     <PageShell>
       <About />
@@ -32,10 +35,8 @@ export default function Home() {
         className="group -mt-8 mb-14 flex items-center justify-between gap-4 rounded-sm border bg-card px-5 py-4 transition-colors hover:bg-accent"
       >
         <span>
-          <span className="label block">Selected work</span>
-          <span className="mt-1 block text-[0.98rem]">
-            Four interactive prototypes, rebuilt from static designs
-          </span>
+          <span className="label block">{t.workTeaser.label}</span>
+          <span className="mt-1 block text-[0.98rem]">{t.workTeaser.text}</span>
         </span>
         <ArrowRight
           aria-hidden="true"

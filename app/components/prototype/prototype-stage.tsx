@@ -1,4 +1,5 @@
 import { PhoneFrame } from "./phone-frame";
+import { useContent } from "~/i18n/use-content";
 
 /**
  * Shared shell for every prototype: the device frame plus the reset control
@@ -16,6 +17,8 @@ export function PrototypeStage({
   children: React.ReactNode;
   time?: string;
 }) {
+  const { t } = useContent();
+
   return (
     <div className="flex flex-col items-center gap-4">
       <PhoneFrame className={palette} time={time}>
@@ -26,7 +29,7 @@ export function PrototypeStage({
         onClick={onReset}
         className="font-mono text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
       >
-        Reset the prototype
+        {t.ui.resetPrototype}
       </button>
     </div>
   );

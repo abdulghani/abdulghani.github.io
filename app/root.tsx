@@ -7,8 +7,12 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import { useEffect } from "react";
+
 import type { Route } from "./+types/root";
 import { TooltipProvider } from "~/components/ui/tooltip";
+import { useContent } from "~/i18n/use-content";
+import "~/i18n/config";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -44,20 +48,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const { language } = useContent();
+
+  // The pre-rendered document says lang="en"; keep it truthful after a switch.
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Something went wrong";
-  let details = "An unexpected error occurred.";
+  const { t } = useContent();
+
+  let message = t.errors.generic;
+  let details = t.errors.genericDetail;
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "Page not found" : "Error";
-    details =
-      error.status === 404
-        ? "That page does not exist here."
-        : error.statusText || details;
+    message = error.status === 404 ? t.errors.notFound : t.errors.label;
+    details = error.status === 404 ? t.errors.notFoundDetail : error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
     stack = error.stack;
@@ -65,11 +75,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-2xl flex-col justify-center gap-4 px-6">
-      <p className="label">Error</p>
+      <p className="label">{t.errors.label}</p>
       <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em]">{message}</h1>
       <p className="text-muted-foreground">{details}</p>
       <a href="/" className="font-mono text-sm text-primary underline-offset-4 hover:underline">
-        ← Back to the portfolio
+        {t.errors.back}
       </a>
       {stack && (
         <pre className="w-full overflow-x-auto rounded-sm border bg-card p-4 font-mono text-xs">

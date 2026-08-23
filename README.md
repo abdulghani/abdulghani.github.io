@@ -10,6 +10,8 @@ Live at **https://abdulghani.github.io**
   build pre-renders `index.html` and the app takes over on the client.
 - **Tailwind CSS 4** with the design tokens in `app/app.css`.
 - **shadcn/ui** (Radix primitives) for card, badge, separator, button, tooltip.
+- **i18next / react-i18next** for English and Indonesian, with the copy held in
+  typed content objects (`app/i18n/content/`) rather than flat keys.
 - **Vite** for the build; deployed to GitHub Pages by
   `.github/workflows/deploy.yml` on every push to `master`.
 
@@ -20,7 +22,12 @@ app/
   root.tsx              document shell, fonts, theme bootstrap
   routes.ts             route config (single index route)
   routes/home.tsx       page composition + meta
-  data/resume.ts        all portfolio content, typed
+  data/resume.ts        language-independent facts: companies, links, tags
+  i18n/
+    config.ts           i18next setup (querystring → localStorage → navigator)
+    content/en.ts       English copy; its shape is the Content type
+    content/id.ts       Indonesian copy, checked against that type
+    use-content.ts      useContent() → copy for the active language
   components/
     site-rail.tsx       sticky rail: name, nav, contacts
     section-heading.tsx
@@ -31,7 +38,13 @@ app/
     use-active-section.ts   scroll-spy for the rail nav
 ```
 
-Content lives in `app/data/resume.ts` — edit there, not in the components.
+Site copy lives in `app/i18n/content/` — edit both locales there, not in the
+components. Adding a string to `en.ts` makes `id.ts` fail to type-check until it
+is translated too.
+
+Append `?lang=id` (or `?lang=en`) to any URL to force a language; the choice is
+remembered in `localStorage`. The prototypes' own UI stays in English, since
+their screens reproduce English-language design comps.
 
 ## Development
 

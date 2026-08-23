@@ -1,27 +1,30 @@
 import { Link, useLocation } from "react-router";
 
+import { LanguageToggle } from "~/components/language-toggle";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { cn } from "~/lib/utils";
-import { contacts, profile, sections } from "~/data/resume";
+import { contacts, profile, sectionIds } from "~/data/resume";
 import { useActiveSection } from "~/hooks/use-active-section";
+import { useContent } from "~/i18n/use-content";
 
 export function SiteRail() {
   const { pathname } = useLocation();
+  const { t } = useContent();
   const onHome = pathname === "/";
-  const activeSection = useActiveSection(sections.map((s) => s.id));
+  const activeSection = useActiveSection(sectionIds);
 
   // Section links are in-page anchors on the home page and cross-page links
   // everywhere else.
   const items = [
-    ...sections.map((section) => ({
-      key: section.id,
-      label: section.label,
-      to: onHome ? `#${section.id}` : `/#${section.id}`,
-      active: onHome && activeSection === section.id,
+    ...sectionIds.map((id) => ({
+      key: id,
+      label: t.ui.nav[id],
+      to: onHome ? `#${id}` : `/#${id}`,
+      active: onHome && activeSection === id,
     })),
     {
-      key: "work",
-      label: "Work",
+      key: "portfolio",
+      label: t.ui.nav.portfolio,
       to: "/portfolio",
       active: pathname.startsWith("/portfolio"),
     },
@@ -30,8 +33,9 @@ export function SiteRail() {
   return (
     <header className="flex flex-col gap-7 py-11 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:py-14">
       <div className="flex items-center gap-3">
-        <p className="label">Portfolio</p>
+        <p className="label">{t.ui.eyebrow}</p>
         <span className="h-px flex-1 bg-border" />
+        <LanguageToggle />
         <ThemeToggle />
       </div>
 
@@ -43,15 +47,15 @@ export function SiteRail() {
           </Link>
         </h1>
         <p className="font-mono text-[0.78rem] leading-7 text-muted-foreground">
-          {profile.title}
+          {t.profile.title}
           <br />
-          {profile.location} · {profile.timezone}
+          {t.profile.location} · {profile.timezone}
           <br />
-          {profile.availability}
+          {t.profile.availability}
         </p>
       </div>
 
-      <nav aria-label="Sections">
+      <nav aria-label={t.ui.sections}>
         <ol className="flex flex-row flex-wrap gap-x-4 gap-y-1 lg:flex-col lg:gap-0.5">
           {items.map((item) => {
             const className = cn(

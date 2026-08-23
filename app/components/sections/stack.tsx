@@ -1,14 +1,16 @@
 import { SectionHeading } from "~/components/section-heading";
 import { Card } from "~/components/ui/card";
-import { stack } from "~/data/resume";
+import { useContent } from "~/i18n/use-content";
 
 export function Stack() {
+  const { t } = useContent();
+
   return (
     <section id="stack" className="scroll-mt-8 pb-14">
-      <SectionHeading title="Stack" meta="What I reach for" />
+      <SectionHeading title={t.headings.stack.title} meta={t.headings.stack.meta} />
 
       <div className="grid gap-px overflow-hidden rounded-sm border bg-border">
-        {stack.map((row) => (
+        {t.stack.map((row) => (
           <Card
             key={row.area}
             className="grid grid-cols-1 gap-1 rounded-none border-0 px-4 py-4 shadow-none sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:gap-4"

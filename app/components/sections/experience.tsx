@@ -1,9 +1,13 @@
 import { SectionHeading } from "~/components/section-heading";
 import { Badge } from "~/components/ui/badge";
 import { cn } from "~/lib/utils";
-import { roles, type Role } from "~/data/resume";
+import { roles, type RoleMeta } from "~/data/resume";
+import { useContent } from "~/i18n/use-content";
+import type { Content } from "~/i18n/content/en";
 
-function Timeline({ role }: { role: Role }) {
+type RoleCopy = Content["roles"][keyof Content["roles"]];
+
+function Timeline({ role, copy, mode }: { role: RoleMeta; copy: RoleCopy; mode: string }) {
   return (
     <article className="relative pb-10 last:pb-0">
       <span
@@ -18,18 +22,18 @@ function Timeline({ role }: { role: Role }) {
 
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <p className="font-mono text-[0.68rem] tracking-[0.09em] uppercase text-muted-foreground">
-          {role.period}
+          {copy.period}
         </p>
         <Badge
           variant="outline"
           className="border-border font-mono text-[0.6rem] tracking-wide text-primary uppercase"
         >
-          {role.mode}
+          {mode}
         </Badge>
       </div>
 
       <h3 className="font-display text-xl font-semibold tracking-[-0.02em] text-balance">
-        {role.title}
+        {copy.title}
       </h3>
       <p className="mb-3 font-mono text-sm text-muted-foreground">
         <a
@@ -40,13 +44,13 @@ function Timeline({ role }: { role: Role }) {
         >
           {role.company}
         </a>{" "}
-        · {role.location}
+        · {copy.location}
       </p>
 
-      <p className="mb-4 text-[0.98rem] text-muted-foreground">{role.brief}</p>
+      <p className="mb-4 text-[0.98rem] text-muted-foreground">{copy.brief}</p>
 
       <ul className="flex flex-col gap-2.5">
-        {role.highlights.map((highlight) => (
+        {copy.highlights.map((highlight) => (
           <li key={highlight.lead} className="relative pl-4.5 text-[0.98rem] leading-relaxed">
             <span
               aria-hidden="true"
@@ -76,9 +80,11 @@ function Timeline({ role }: { role: Role }) {
 }
 
 export function Experience() {
+  const { t } = useContent();
+
   return (
     <section id="work" className="scroll-mt-8 pb-14">
-      <SectionHeading title="Experience" meta={`${roles.length} roles`} />
+      <SectionHeading title={t.headings.work.title} meta={t.headings.work.meta(roles.length)} />
 
       <div className="relative pl-7">
         <span
@@ -86,7 +92,12 @@ export function Experience() {
           className="absolute top-2 bottom-1.5 left-[0.31rem] w-px bg-border"
         />
         {roles.map((role) => (
-          <Timeline key={role.id} role={role} />
+          <Timeline
+            key={role.id}
+            role={role}
+            copy={t.roles[role.id as keyof Content["roles"]]}
+            mode={t.modes[role.mode]}
+          />
         ))}
       </div>
     </section>

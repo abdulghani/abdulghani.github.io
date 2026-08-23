@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Monitor, Moon, Sun } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
+import { useContent } from "~/i18n/use-content";
 import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/ui/tooltip";
 
 export type Theme = "system" | "light" | "dark";
@@ -9,11 +10,7 @@ export type Theme = "system" | "light" | "dark";
 const STORAGE_KEY = "theme";
 const ORDER: Theme[] = ["light", "dark", "system"];
 
-const COPY: Record<Theme, { icon: typeof Sun; label: string }> = {
-  system: { icon: Monitor, label: "Match system theme" },
-  light: { icon: Sun, label: "Light theme" },
-  dark: { icon: Moon, label: "Dark theme" },
-};
+const ICON: Record<Theme, typeof Sun> = { system: Monitor, light: Sun, dark: Moon };
 
 export function applyTheme(theme: Theme) {
   const dark =
@@ -24,6 +21,7 @@ export function applyTheme(theme: Theme) {
 }
 
 export function ThemeToggle() {
+  const { t } = useContent();
   // Light is the default; a stored choice is picked up on mount so the
   // pre-rendered markup never depends on browser-only state.
   const [theme, setTheme] = useState<Theme>("light");
@@ -44,8 +42,10 @@ export function ThemeToggle() {
     return () => media.removeEventListener("change", sync);
   }, [theme]);
 
-  const { icon: Icon, label } = COPY[theme];
+  const Icon = ICON[theme];
+  const label = t.ui.theme[theme];
   const next = ORDER[(ORDER.indexOf(theme) + 1) % ORDER.length];
+  const nextLabel = t.ui.theme[next];
 
   return (
     <Tooltip>
@@ -53,7 +53,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label={`${label}. Switch to ${COPY[next].label.toLowerCase()}`}
+          aria-label={`${label} → ${nextLabel}`}
           onClick={() => setTheme(next)}
         >
           <Icon aria-hidden="true" />
