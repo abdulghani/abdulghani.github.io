@@ -40,10 +40,11 @@ export function SiteRail() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h1 className="font-display text-[clamp(2.4rem,4.2vw,3.1rem)] leading-[0.94] font-extrabold tracking-[-0.03em] text-balance">
+        {/* One line while the rail is full width; stacked once it becomes a column. */}
+        <h1 className="font-display text-[clamp(2.1rem,8vw,3.1rem)] leading-[0.94] font-extrabold tracking-[-0.03em] text-balance lg:text-[clamp(2.4rem,4.2vw,3.1rem)]">
           <Link to="/" className="hover:opacity-90">
-            {profile.firstName}
-            <span className="block text-primary">{profile.lastName}</span>
+            {profile.firstName}{" "}
+            <span className="text-primary lg:block">{profile.lastName}</span>
           </Link>
         </h1>
         <p className="font-mono text-[0.78rem] leading-7 text-muted-foreground">
