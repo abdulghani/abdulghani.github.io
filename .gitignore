@@ -1,0 +1,3 @@
+# Source documents, not for publication
+*.pdf
+.DS_Store

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdul Ghani — Back-end Engineer</title>
+<meta name="description" content="Portfolio of Abdul Ghani, senior back-end engineer in Jakarta building REST and GraphQL services, cloud infrastructure and CI/CD across APAC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --ground:#F1F3F2;
+  --surface:#FBFCFB;
+  --ink:#0E1517;
+  --muted:#5C6E70;
+  --line:#D3DAD9;
+  --accent:#15505E;
+  --accent-soft:#E2EBEC;
+  --ember:#C24A22;
+  --shadow:0 1px 2px rgba(14,21,23,.05), 0 8px 24px rgba(14,21,23,.05);
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --rail:19rem;
+  --max:44rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A1113;
+    --surface:#101A1C;
+    --ink:#E7EEEC;
+    --muted:#8FA3A4;
+    --line:#22302F;
+    --accent:#74C3CA;
+    --accent-soft:#152528;
+    --ember:#F0805A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A1113;
+  --surface:#101A1C;
+  --ink:#E7EEEC;
+  --muted:#8FA3A4;
+  --line:#22302F;
+  --accent:#74C3CA;
+  --accent-soft:#152528;
+  --ember:#F0805A;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:88px 88px, 88px 88px;
+  background-position:-1px -1px;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  background:radial-gradient(120% 80% at 50% 0%, transparent 0%, var(--ground) 72%);
+  pointer-events:none;
+  z-index:0;
+}
+.page{position:relative;z-index:1}
+
+a{color:var(--accent);text-decoration:none;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:2px}
+
+/* ---------- shell ---------- */
+.shell{
+  max-width:76rem;
+  margin:0 auto;
+  padding:0 1.5rem 6rem;
+  display:grid;
+  grid-template-columns:var(--rail) minmax(0,1fr);
+  gap:4rem;
+  align-items:start;
+}
+
+/* ---------- left rail ---------- */
+.rail{
+  position:sticky; top:0;
+  padding:3.5rem 0 2rem;
+  display:flex; flex-direction:column; gap:1.75rem;
+}
+.mark{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex; align-items:center; gap:.6rem;
+}
+.mark::after{content:"";flex:1;height:1px;background:var(--line)}
+.name{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.4rem,4.2vw,3.1rem);
+  line-height:.94;
+  letter-spacing:-.03em;
+  margin:0;
+  text-wrap:balance;
+}
+.name span{display:block;color:var(--accent)}
+.role{
+  font-family:var(--mono);
+  font-size:.78rem;
+  line-height:1.7;
+  color:var(--muted);
+  margin:0;
+}
+nav ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.15rem}
+nav a{
+  display:flex; align-items:baseline; gap:.7rem;
+  font-family:var(--mono);
+  font-size:.75rem;
+  letter-spacing:.04em;
+  color:var(--muted);
+  padding:.3rem 0;
+  border-bottom:1px solid transparent;
+}
+nav a:hover{color:var(--ink);text-decoration:none;border-bottom-color:var(--line)}
+nav a .idx{color:var(--accent);opacity:.65}
+.contact{display:flex;flex-direction:column;gap:.45rem;font-family:var(--mono);font-size:.75rem}
+.contact a{color:var(--ink)}
+.contact a:hover{color:var(--accent)}
+
+/* ---------- main ---------- */
+main{padding:3.5rem 0 0;max-width:var(--max)}
+section{scroll-margin-top:2rem;padding:0 0 3.5rem}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 1.1rem;
+  padding-bottom:.55rem;
+  border-bottom:1px solid var(--line);
+  display:flex; justify-content:space-between; gap:1rem;
+}
+.eyebrow em{font-style:normal;color:var(--accent)}
+.lede{
+  font-size:1.22rem;
+  line-height:1.55;
+  margin:0 0 1.4rem;
+}
+.lede b{font-weight:600;color:var(--accent);font-variant:normal}
+p{margin:0 0 1rem}
+p:last-child{margin-bottom:0}
+
+/* ---------- stat strip ---------- */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  margin-top:2rem;
+}
+.stat{background:var(--surface);padding:1rem 1.1rem}
+.stat dt{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 .35rem;
+}
+.stat dd{
+  margin:0;font-family:var(--display);font-weight:600;font-size:1.45rem;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+}
+.stat dd small{font-family:var(--mono);font-size:.68rem;font-weight:400;color:var(--muted);letter-spacing:0}
+
+/* ---------- timeline ---------- */
+.track{position:relative;padding-left:1.6rem}
+.track::before{
+  content:"";position:absolute;left:.31rem;top:.55rem;bottom:.4rem;
+  width:1px;background:var(--line);
+}
+.job{position:relative;padding-bottom:2.6rem}
+.job:last-child{padding-bottom:0}
+.job::before{
+  content:"";position:absolute;left:-1.6rem;top:.5rem;
+  width:.63rem;height:.63rem;border-radius:50%;
+  background:var(--ground);border:1px solid var(--accent);
+}
+.job.now::before{background:var(--ember);border-color:var(--ember);box-shadow:0 0 0 4px var(--accent-soft)}
+.stamp{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:.3rem;
+}
+.stamp .mode{
+  border:1px solid var(--line);border-radius:999px;
+  padding:.05rem .45rem;font-size:.6rem;color:var(--accent);
+}
+.job h3{
+  font-family:var(--display);font-weight:600;font-size:1.28rem;
+  letter-spacing:-.02em;line-height:1.25;margin:0 0 .1rem;text-wrap:balance;
+}
+.job .org{
+  font-family:var(--mono);font-size:.8rem;color:var(--muted);margin:0 0 .7rem;
+}
+.job .org a{color:var(--accent)}
+.job .brief{color:var(--muted);margin:0 0 .9rem;font-size:.98rem}
+.job ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.65rem}
+.job li{position:relative;padding-left:1.1rem;font-size:.98rem;line-height:1.6}
+.job li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:.42rem;height:1px;background:var(--accent);
+}
+.job li b{font-weight:600;font-family:var(--display);font-size:.95rem;letter-spacing:-.01em}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.95rem}
+.tag{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;
+  color:var(--muted);background:var(--surface);
+  border:1px solid var(--line);border-radius:2px;padding:.12rem .42rem;
+}
+
+/* ---------- stack ---------- */
+.stack{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.row{
+  background:var(--surface);padding:.95rem 1.1rem;
+  display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1rem;align-items:start;
+}
+.row h3{
+  margin:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:500;padding-top:.15rem;
+}
+.row p{margin:0;font-size:.95rem;line-height:1.55}
+.row .lead{color:var(--ink);font-weight:600;font-family:var(--display);letter-spacing:-.01em}
+
+/* ---------- education / footer ---------- */
+.edu{
+  border-left:2px solid var(--accent);
+  padding:.15rem 0 .15rem 1.1rem;
+}
+.edu h3{font-family:var(--display);font-weight:600;font-size:1.1rem;margin:0 0 .15rem;letter-spacing:-.02em}
+.edu p{font-size:.95rem;color:var(--muted);margin:0}
+.foot{
+  margin-top:1rem;border-top:1px solid var(--line);padding-top:1.6rem;
+  display:flex;flex-wrap:wrap;gap:1.5rem;align-items:baseline;justify-content:space-between;
+  font-family:var(--mono);font-size:.72rem;color:var(--muted);
+}
+.foot .links{display:flex;flex-wrap:wrap;gap:1.1rem}
+
+@media (max-width:56rem){
+  body{background-size:56px 56px,56px 56px}
+  .shell{grid-template-columns:minmax(0,1fr);gap:2.5rem;padding-bottom:4rem}
+  .rail{position:static;padding:2.75rem 0 0}
+  main{padding-top:0}
+  nav ol{flex-direction:row;flex-wrap:wrap;gap:.35rem 1.1rem}
+  nav a{border-bottom:none;padding:.1rem 0}
+  .row{grid-template-columns:minmax(0,1fr);gap:.3rem}
+}
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.in{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="shell">
+
+  <header class="rail">
+    <p class="mark">Portfolio</p>
+    <h1 class="name">Abdul<span>Ghani</span></h1>
+    <p class="role">Senior Back-end Engineer<br>Jakarta, APAC · GMT+8<br>Open to remote roles</p>
+    <nav aria-label="Sections">
+      <ol>
+        <li><a href="#about"><span class="idx">/</span>About</a></li>
+        <li><a href="#work"><span class="idx">/</span>Experience</a></li>
+        <li><a href="#stack"><span class="idx">/</span>Stack</a></li>
+        <li><a href="#education"><span class="idx">/</span>Education</a></li>
+      </ol>
+    </nav>
+    <div class="contact">
+      <a href="mailto:contact.abdulghani@gmail.com">contact.abdulghani@gmail.com</a>
+      <a href="https://linkedin.com/in/itsabdulghani" target="_blank" rel="noopener">linkedin.com/in/itsabdulghani</a>
+      <a href="https://github.com/abdulghani" target="_blank" rel="noopener">github.com/abdulghani</a>
+      <a href="https://wa.me/+6281220555782" target="_blank" rel="noopener">+62 812 2055 5782</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="about" class="reveal">
+      <p class="eyebrow"><span>About</span><em>2019 — present</em></p>
+      <p class="lede">I build and maintain <b>REST and GraphQL</b> services for companies that move money, data and compliance across borders — designing the service architecture, then owning the infrastructure it runs on.</p>
+      <p>Seven years across fintech, e-commerce and business services in Singapore, Hong Kong and Indonesia. My work sits where API design meets operations: breaking monoliths into domain-separated microservices, hardening bank integrations with request signing and cryptography, and replacing manual releases with CI/CD that ships in minutes instead of days.</p>
+      <p>Full-stack when it helps — TypeScript, Node.js and Go on the server, React and React Native on the client, AWS, Azure and CDK underneath.</p>
+
+      <dl class="stats">
+        <div class="stat"><dt>Experience</dt><dd>7<small> yrs</small></dd></div>
+        <div class="stat"><dt>Peak traffic</dt><dd>+200<small>%</small></dd></div>
+        <div class="stat"><dt>Release time</dt><dd>Days<small> → minutes</small></dd></div>
+        <div class="stat"><dt>Markets</dt><dd>SG · HK<small> · GB · US · ID</small></dd></div>
+      </dl>
+    </section>
+
+    <section id="work" class="reveal">
+      <p class="eyebrow"><span>Experience</span><em>7 roles</em></p>
+      <div class="track">
+
+        <article class="job now">
+          <p class="stamp"><span>May 2025 — Present</span><span class="mode">Remote</span></p>
+          <h3>Senior Back-end Engineer</h3>
+          <p class="org"><a href="https://osome.com/" target="_blank" rel="noopener">Osome</a> · Singapore</p>
+          <p class="brief">Digital business services — incorporation, bookkeeping, accounting and compliance for entrepreneurs across Singapore, Hong Kong and the UK.</p>
+          <ul>
+            <li><b>Launched Hong Kong incorporation.</b> Built full incorporation support for the HK region with the rules and validations needed for smooth HK-based filings — the platform previously covered only Great Britain and Singapore.</li>
+            <li><b>Closed a sensitive-data logging gap.</b> Fixed production logging where sensitive fields were not properly masked, strengthening data protection and compliance.</li>
+            <li><b>Kept Singapore filings ACRA-compliant.</b> Added the required contact-address field to meet ACRA regulations.</li>
+            <li><b>Put AI into the review loop.</b> Use AI to draft implementations quickly, then review for correctness and security and debug what it misses.</li>
+          </ul>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Compliance</span><span class="tag">AI-assisted dev</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Dec 2022 — May 2025</span><span class="mode">Remote</span></p>
+          <h3>Senior Back-end Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/necto-api" target="_blank" rel="noopener">Necto</a> · Singapore</p>
+          <p class="brief">Corporate bank API aggregation for corporate treasury, enterprise and finance teams.</p>
+          <ul>
+            <li><b>Owned the core bank-integration API.</b> Maintained the Node.js REST API clients build against to connect their tools to the aggregation layer.</li>
+            <li><b>Refactored the legacy core service.</b> Reworked the internal Node.js API to process multiple service entries in parallel rather than sequentially.</li>
+            <li><b>Integrated multiple banks.</b> Connected several banks and eleven services to the company's API layer.</li>
+            <li><b>Met bank security standards.</b> Implemented request signing, encryption and response decryption with certificate and cryptographic techniques to protect financial data.</li>
+            <li><b>Cut releases from days to minutes.</b> Built a one-click release pipeline and automated PR test-environment deployment, raising iteration velocity.</li>
+            <li><b>Led on critical decisions.</b> Onboarded new engineers to productivity and troubleshot issues raised across the team.</li>
+          </ul>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">REST</span><span class="tag">Cryptography</span><span class="tag">CI/CD</span><span class="tag">Fintech</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Nov 2021 — Dec 2022</span><span class="mode">Hybrid</span></p>
+          <h3>Senior Back-end Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/pawjourr/" target="_blank" rel="noopener">Pawjourr</a> · Singapore</p>
+          <p class="brief">Pet-centric freelance outsourcing platform operating in the US and Singapore.</p>
+          <ul>
+            <li><b>Built the GraphQL API.</b> Stood up a GraphQL layer on Nest.js and Node.js serving the whole website.</li>
+            <li><b>Broke the monolith apart.</b> Split the API into domain-separated microservices with TypeScript, Nest.js and NATS, deploying each independently for higher availability and domain resilience.</li>
+            <li><b>Auto-scaled the infrastructure.</b> Cut server instances from thousands to hundreds while raising peak traffic capacity by 200%.</li>
+            <li><b>Introduced CI/CD.</b> GitHub Actions, AWS CodeDeploy and Azure Pipelines — time to release dropped from hours and days to minutes.</li>
+            <li><b>Set the engineering baseline.</b> Project tooling, formatting, commit conventions and linting; introduced agile and scrum; ran technical screenings for hires.</li>
+          </ul>
+          <div class="tags"><span class="tag">GraphQL</span><span class="tag">Nest.js</span><span class="tag">NATS</span><span class="tag">Microservices</span><span class="tag">AWS</span><span class="tag">Azure</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Apr 2021 — Sep 2021</span><span class="mode">Remote</span></p>
+          <h3>Lead Back-end Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/kaddra/" target="_blank" rel="noopener">Kaddra</a> · Singapore</p>
+          <p class="brief">Mobile e-commerce and retail platform; led the backend team through a move into serverless.</p>
+          <ul>
+            <li><b>Designed serverless APIs.</b> Implemented serverless services to make the platform more agile and responsive.</li>
+            <li><b>Maintained the REST core.</b> Kept the Node.js and Express service running, adding features and addressing bugs.</li>
+            <li><b>Expanded the CI/CD workflow.</b> CircleCI and AWS CodeDeploy across development and deployment.</li>
+            <li><b>Standardised data access.</b> Introduced ORM tooling for consistent database interactions.</li>
+            <li><b>Led engineers and QA.</b> Managed the team and held the bar on code quality.</li>
+          </ul>
+          <div class="tags"><span class="tag">Serverless</span><span class="tag">Express</span><span class="tag">CircleCI</span><span class="tag">ORM</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Aug 2020 — Mar 2021</span><span class="mode">Remote</span></p>
+          <h3>Full-stack Software Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/kaddra/" target="_blank" rel="noopener">Kaddra</a> · Singapore</p>
+          <p class="brief">Backend services and mobile app for a leading Singapore retail platform.</p>
+          <ul>
+            <li><b>Maintained the full-stack application.</b> React Native mobile app against a Node.js and Express REST API — bug fixes and new features.</li>
+            <li><b>Promoted to Lead.</b> Recognised for the work above and given the backend team.</li>
+          </ul>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">Node.js</span><span class="tag">Express</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Jan 2020 — May 2020</span><span class="mode">On-site</span></p>
+          <h3>Full-stack Software Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/soyakaai/" target="_blank" rel="noopener">SoyakaAI</a> · Jakarta</p>
+          <p class="brief">Mobile fashion social-commerce platform; led a new product from the ground up.</p>
+          <ul>
+            <li><b>Shipped cross-platform mobile.</b> Set up Android and iOS applications in Flutter.</li>
+            <li><b>Built the product APIs.</b> Backend services in Node.js and Express connecting front-end and back-end cleanly.</li>
+            <li><b>Ran the outsourced team.</b> Coordinated vendor engineers and internal teams to hit project milestones.</li>
+          </ul>
+          <div class="tags"><span class="tag">Flutter</span><span class="tag">Node.js</span><span class="tag">Express</span></div>
+        </article>
+
+        <article class="job">
+          <p class="stamp"><span>Mar 2019 — Dec 2019</span><span class="mode">On-site</span></p>
+          <h3>Front-end Engineer</h3>
+          <p class="org"><a href="https://www.linkedin.com/company/soyakaai/" target="_blank" rel="noopener">SoyakaAI</a> · Jakarta</p>
+          <p class="brief">Frontend web application and the internal tools the company ran on.</p>
+          <ul>
+            <li><b>Maintained the React.js web app</b> and internal tooling, resolving issues promptly.</li>
+            <li><b>Led the internal-tools redesign,</b> improving interface design and overall usability.</li>
+            <li><b>Migrated to React Hooks,</b> improving maintainability on the latest React features.</li>
+            <li><b>Made products installable.</b> Built a Progressive Web App, improving accessibility on devices.</li>
+          </ul>
+          <div class="tags"><span class="tag">React</span><span class="tag">Hooks</span><span class="tag">PWA</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="stack" class="reveal">
+      <p class="eyebrow"><span>Stack</span><em>What I reach for</em></p>
+      <div class="stack">
+        <div class="row"><h3>Languages</h3><p><span class="lead">TypeScript, Node.js, Go.</span> JavaScript, Dart on mobile.</p></div>
+        <div class="row"><h3>APIs</h3><p><span class="lead">REST, GraphQL.</span> Nest.js, Express, request signing, encryption and certificate-based auth for bank integrations.</p></div>
+        <div class="row"><h3>Architecture</h3><p><span class="lead">Microservices, serverless, monoliths.</span> Domain separation, NATS messaging, independent deploys, parallel processing.</p></div>
+        <div class="row"><h3>Cloud</h3><p><span class="lead">AWS, Azure, CDK.</span> Auto-scaling infrastructure, high availability, cost reduction.</p></div>
+        <div class="row"><h3>Delivery</h3><p><span class="lead">CI/CD end to end.</span> GitHub Actions, CircleCI, AWS CodeDeploy, Azure Pipelines, PR preview environments.</p></div>
+        <div class="row"><h3>Front-end</h3><p><span class="lead">React, React Native, Flutter.</span> PWAs, internal tooling, design-to-interface work.</p></div>
+        <div class="row"><h3>Practice</h3><p><span class="lead">Team leadership.</span> Onboarding, agile and scrum, technical screening, linting and commit conventions, AI-assisted development with human review.</p></div>
+      </div>
+    </section>
+
+    <section id="education" class="reveal">
+      <p class="eyebrow"><span>Education</span><em>2014 — 2019</em></p>
+      <div class="edu">
+        <h3>B.Eng, Informatics Engineering</h3>
+        <p><a href="https://www.linkedin.com/school/pasundanuniversity/" target="_blank" rel="noopener">Universitas Pasundan</a>, Bandung, Indonesia · July 2014 — March 2019<br>Equivalent to Computer Science, focused on software engineering. GPA 3.72 / 4.00.</p>
+      </div>
+
+      <div class="foot">
+        <span>Jakarta, Indonesia · GMT+8</span>
+        <span class="links">
+          <a href="mailto:contact.abdulghani@gmail.com">Email</a>
+          <a href="https://linkedin.com/in/itsabdulghani" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/abdulghani" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://wa.me/+6281220555782" target="_blank" rel="noopener">WhatsApp</a>
+        </span>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div>
+
+<script>
+(function(){
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
