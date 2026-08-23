@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ChevronLeft } from "lucide-react";
+import { ArrowUpRight, ChevronLeft } from "lucide-react";
 
 import { PageShell } from "~/components/page-shell";
 import { SectionHeading } from "~/components/section-heading";
@@ -20,8 +20,9 @@ export function ProjectPage({
   const { t } = useContent();
   const project = findProject(slug);
   const copy = t.projects[slug];
+  const kind = "kind" in copy ? copy.kind : t.portfolio.kind;
 
-  useDocumentMeta(`${copy.name} — ${t.portfolio.kind}`, copy.summary);
+  useDocumentMeta(`${copy.name} — ${kind}`, copy.summary);
 
   return (
     <PageShell wide>
@@ -34,10 +35,22 @@ export function ProjectPage({
           {t.ui.backToWork}
         </Link>
 
-        <SectionHeading title={copy.name} meta={t.portfolio.kind} />
+        <SectionHeading title={copy.name} meta={kind} />
 
         <p className="mb-4 text-xl leading-[1.55] text-balance">{copy.lede}</p>
         <p className="mb-6 text-muted-foreground">{copy.sub}</p>
+
+        {project.storeUrl && "storeLabel" in copy && (
+          <a
+            href={project.storeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="mb-6 inline-flex items-center gap-2 rounded-sm bg-primary px-4 py-2.5 text-[0.9rem] font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            {copy.storeLabel}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </a>
+        )}
 
         <div className="mb-6 flex flex-wrap gap-1.5">
           {project.stack.map((item) => (

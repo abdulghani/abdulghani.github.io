@@ -296,13 +296,16 @@ export const en = {
 
   projects: {
     salah: {
-      name: "Salah Times",
+      name: "Muslim Salah Times",
+      kind: "Shipped app",
+      role: "My iOS app, rebuilt for the browser",
+      storeLabel: "View on the App Store",
       summary:
-        "A prayer-times app rebuilt from two screens: a live countdown to the next prayer, a timetable that marks what is happening now and next, and a settings sheet where the provider, city and calculation method actually change the times on the screen behind it.",
+        "A prayer-times app I built and shipped to the App Store. This is the same product rebuilt in the browser so you can try it here: a live countdown to the next prayer, a timetable marking what is now and next, and a settings sheet where provider, city and calculation method really move the times.",
       thumbnailAlt:
-        "The Salah Times prototype on a phone: a running clock, a Maghrib-to-Isha progress bar with a countdown, and the day's six prayer times.",
-      lede: "A prayer-times app, rebuilt so the clock really runs. Scrub through the day and watch the window, the countdown and the NOW badge move; open Settings and change the city or the madhab to see the timetable answer.",
-      sub: "Fifth port on the same device shell. The clock ticks in real time, and the slider under the phone is a prototype control rather than part of the app.",
+        "Muslim Salah Times on a phone: a running clock, a Maghrib-to-Isha progress bar with a countdown, and the day's six prayer times.",
+      lede: "My prayer-times app, rebuilt in the browser so it can be tried without an install. Scrub through the day and watch the window, the countdown and the NOW badge move; open Settings and change the city or the madhab to see the timetable answer.",
+      sub: "The iOS original is on the App Store; this rebuild runs on the same device shell as the other prototypes. The clock ticks in real time, and the slider under the phone is a prototype control rather than part of the app.",
       notes: [
         {
           title: "Time is the state",
@@ -318,7 +321,7 @@ export const en = {
         },
       ],
       attribution:
-        "Rebuilt from screenshots of a prayer-times app for practice. Timetables are a small fixed sample of Kemenag data for three cities, not a live feed — do not pray by it.",
+        "The shipped app fetches the official Kementerian Agama RI timetable via api.myquran.com and caches it. This browser rebuild carries a small fixed sample for three cities instead — use the real app for actual prayer times.",
     },
     "task-manager": {
       name: "Task manager",

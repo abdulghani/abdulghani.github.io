@@ -37,6 +37,8 @@ export default function Portfolio() {
         <ul className="flex flex-col gap-4">
           {projects.map((project) => {
             const copy = t.projects[project.slug];
+            const kind = "kind" in copy ? copy.kind : t.portfolio.kind;
+            const role = "role" in copy ? copy.role : t.portfolio.role;
             return (
               <li key={project.slug}>
                 <Link
@@ -66,15 +68,21 @@ export default function Portfolio() {
                       </p>
                     </div>
 
-                    <p className="mt-0.5 font-mono text-sm text-muted-foreground">
-                      {t.portfolio.role}
-                    </p>
+                    <p className="mt-0.5 font-mono text-sm text-muted-foreground">{role}</p>
                     <p className="mt-3 text-[0.98rem] leading-relaxed">{copy.summary}</p>
 
                     <div className="mt-4 flex flex-wrap items-center gap-1.5">
                       <Badge className="rounded-sm font-mono text-[0.66rem] tracking-[0.05em]">
-                        {t.portfolio.kind}
+                        {kind}
                       </Badge>
+                      {project.storeUrl && (
+                        <Badge
+                          variant="outline"
+                          className="rounded-sm border-primary bg-card font-mono text-[0.66rem] tracking-[0.05em] text-primary"
+                        >
+                          App Store
+                        </Badge>
+                      )}
                       {project.stack.map((item) => (
                         <Badge
                           key={item}

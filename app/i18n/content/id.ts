@@ -315,13 +315,16 @@ export const id: Content = {
 
   projects: {
     salah: {
-      name: "Waktu Salat",
+      name: "Muslim Salah Times",
+      kind: "Aplikasi rilis",
+      role: "Aplikasi iOS saya, dibangun ulang untuk peramban",
+      storeLabel: "Lihat di App Store",
       summary:
-        "Aplikasi jadwal salat yang dibangun ulang dari dua layar: hitung mundur langsung menuju waktu berikutnya, daftar waktu yang menandai mana yang sedang berjalan dan mana yang berikutnya, serta lembar pengaturan yang penyedia, kota, dan metode perhitungannya benar-benar mengubah waktu di layar belakangnya.",
+        "Aplikasi jadwal salat yang saya buat dan rilis di App Store. Ini produk yang sama, dibangun ulang di peramban supaya bisa langsung dicoba di sini: hitung mundur langsung menuju waktu berikutnya, daftar waktu yang menandai mana yang sedang berjalan dan berikutnya, serta lembar pengaturan yang penyedia, kota, dan metode perhitungannya benar-benar menggeser waktunya.",
       thumbnailAlt:
-        "Prototipe Waktu Salat pada ponsel: jam berjalan, bilah kemajuan Maghrib ke Isya beserta hitung mundur, dan enam waktu salat hari itu.",
-      lede: "Aplikasi jadwal salat, dibangun ulang agar jamnya benar-benar berjalan. Geser sepanjang hari dan lihat rentang waktu, hitung mundur, serta label NOW ikut berpindah; buka Pengaturan lalu ganti kota atau mazhab dan jadwalnya menanggapi.",
-      sub: "Alih desain kelima di cangkang perangkat yang sama. Jamnya berdetak sungguhan, dan penggeser di bawah ponsel adalah kendali prototipe, bukan bagian dari aplikasinya.",
+        "Muslim Salah Times pada ponsel: jam berjalan, bilah kemajuan Maghrib ke Isya beserta hitung mundur, dan enam waktu salat hari itu.",
+      lede: "Aplikasi jadwal salat buatan saya, dibangun ulang di peramban agar bisa dicoba tanpa memasang apa pun. Geser sepanjang hari dan lihat rentang waktu, hitung mundur, serta label NOW ikut berpindah; buka Pengaturan lalu ganti kota atau mazhab dan jadwalnya menanggapi.",
+      sub: "Versi iOS aslinya ada di App Store; versi ini berjalan di cangkang perangkat yang sama dengan prototipe lainnya. Jamnya berdetak sungguhan, dan penggeser di bawah ponsel adalah kendali prototipe, bukan bagian dari aplikasinya.",
       notes: [
         {
           title: "Waktu adalah state-nya",
@@ -337,7 +340,7 @@ export const id: Content = {
         },
       ],
       attribution:
-        "Dibangun ulang dari tangkapan layar sebuah aplikasi jadwal salat sebagai latihan. Jadwalnya hanya cuplikan tetap data Kemenag untuk tiga kota, bukan umpan langsung — jangan dijadikan patokan salat.",
+        "Aplikasi yang dirilis mengambil jadwal resmi Kementerian Agama RI lewat api.myquran.com lalu menyimpannya. Versi peramban ini hanya membawa cuplikan tetap untuk tiga kota — gunakan aplikasi aslinya untuk jadwal salat sebenarnya.",
     },
     "task-manager": {
       name: "Manajer tugas",

@@ -17,6 +17,8 @@ export type Project = {
   stack: string[];
   href: string;
   thumbnail: string;
+  /** Where the shipped app lives, when there is one. */
+  storeUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -26,6 +28,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind", "Time maths"],
     href: "/portfolio/salah",
     thumbnail: salahThumb,
+    storeUrl: "https://apps.apple.com/app/id6802197321",
   },
   {
     slug: "task-manager",
