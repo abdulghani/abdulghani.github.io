@@ -245,3 +245,21 @@
   outline: 2px solid var(--app-fg);
   outline-offset: 2px;
 }
+
+/* ---------------------------------------------------------------
+   The prototype device is a fixed 23.5rem × 46.5rem so every screen
+   is the same size everywhere. On narrow viewports it is zoomed as a
+   whole — zoom (unlike transform) shrinks the layout box too, so the
+   page never scrolls sideways and the shell keeps its proportions.
+   --------------------------------------------------------------- */
+@media (width < 28rem) {
+  .device-shell {
+    zoom: 0.86;
+  }
+}
+
+@media (width < 24rem) {
+  .device-shell {
+    zoom: 0.74;
+  }
+}

@@ -17,11 +17,13 @@ export function PhoneFrame({
   return (
     <div
       className={cn(
-        "relative w-[23.5rem] max-w-full shrink-0 rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
+        "device-shell relative w-[23.5rem] shrink-0 rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
         className,
       )}
     >
-      <div className="relative flex h-[46.5rem] max-h-[80dvh] flex-col overflow-hidden rounded-[2.25rem] bg-[var(--app-bg)] text-[var(--app-fg)]">
+      {/* Fixed height on purpose: the device must be the same size on every
+          viewport, so the page scrolls around it rather than shrinking it. */}
+      <div className="relative flex h-[46.5rem] flex-col overflow-hidden rounded-[2.25rem] bg-[var(--app-bg)] text-[var(--app-fg)]">
         <StatusBar time={time} />
         <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
         <div className="flex justify-center pt-1 pb-2">
