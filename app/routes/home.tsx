@@ -1,10 +1,13 @@
+import { Link } from "react-router";
+import { ArrowRight } from "lucide-react";
+
 import type { Route } from "./+types/home";
 
+import { PageShell } from "~/components/page-shell";
 import { About } from "~/components/sections/about";
 import { Education } from "~/components/sections/education";
 import { Experience } from "~/components/sections/experience";
 import { Stack } from "~/components/sections/stack";
-import { SiteRail } from "~/components/site-rail";
 import { profile } from "~/data/resume";
 
 export function meta(_: Route.MetaArgs) {
@@ -21,19 +24,28 @@ export function meta(_: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="relative">
-      <div aria-hidden="true" className="grid-fade pointer-events-none fixed inset-0 z-0" />
+    <PageShell>
+      <About />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 pb-24 lg:grid-cols-[19rem_minmax(0,1fr)] lg:gap-16 lg:items-start">
-        <SiteRail />
+      <Link
+        to="/portfolio"
+        className="group -mt-8 mb-14 flex items-center justify-between gap-4 rounded-sm border bg-card px-5 py-4 transition-colors hover:bg-accent"
+      >
+        <span>
+          <span className="label block">Selected work</span>
+          <span className="mt-1 block text-[0.98rem]">
+            Four projects, including an interactive task-manager prototype
+          </span>
+        </span>
+        <ArrowRight
+          aria-hidden="true"
+          className="size-4 shrink-0 text-primary transition-transform group-hover:translate-x-1"
+        />
+      </Link>
 
-        <main className="max-w-2xl pt-0 lg:pt-14">
-          <About />
-          <Experience />
-          <Stack />
-          <Education />
-        </main>
-      </div>
-    </div>
+      <Experience />
+      <Stack />
+      <Education />
+    </PageShell>
   );
 }

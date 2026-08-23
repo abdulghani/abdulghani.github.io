@@ -1,10 +1,31 @@
+import { Link, useLocation } from "react-router";
+
 import { ThemeToggle } from "~/components/theme-toggle";
 import { cn } from "~/lib/utils";
 import { contacts, profile, sections } from "~/data/resume";
 import { useActiveSection } from "~/hooks/use-active-section";
 
 export function SiteRail() {
-  const active = useActiveSection(sections.map((s) => s.id));
+  const { pathname } = useLocation();
+  const onHome = pathname === "/";
+  const activeSection = useActiveSection(sections.map((s) => s.id));
+
+  // Section links are in-page anchors on the home page and cross-page links
+  // everywhere else.
+  const items = [
+    ...sections.map((section) => ({
+      key: section.id,
+      label: section.label,
+      to: onHome ? `#${section.id}` : `/#${section.id}`,
+      active: onHome && activeSection === section.id,
+    })),
+    {
+      key: "work",
+      label: "Work",
+      to: "/portfolio",
+      active: pathname.startsWith("/portfolio"),
+    },
+  ];
 
   return (
     <header className="flex flex-col gap-7 py-11 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:py-14">
@@ -16,8 +37,10 @@ export function SiteRail() {
 
       <div className="flex flex-col gap-4">
         <h1 className="font-display text-[clamp(2.4rem,4.2vw,3.1rem)] leading-[0.94] font-extrabold tracking-[-0.03em] text-balance">
-          {profile.firstName}
-          <span className="block text-primary">{profile.lastName}</span>
+          <Link to="/" className="hover:opacity-90">
+            {profile.firstName}
+            <span className="block text-primary">{profile.lastName}</span>
+          </Link>
         </h1>
         <p className="font-mono text-[0.78rem] leading-7 text-muted-foreground">
           {profile.title}
@@ -30,31 +53,39 @@ export function SiteRail() {
 
       <nav aria-label="Sections">
         <ol className="flex flex-row flex-wrap gap-x-4 gap-y-1 lg:flex-col lg:gap-0.5">
-          {sections.map((section) => {
-            const isActive = active === section.id;
+          {items.map((item) => {
+            const className = cn(
+              "flex items-baseline gap-2.5 py-1 font-mono text-xs tracking-[0.04em] transition-colors lg:border-b lg:border-transparent",
+              item.active
+                ? "text-foreground lg:border-border"
+                : "text-muted-foreground hover:text-foreground lg:hover:border-border",
+            );
+            const marker = (
+              <span
+                className={cn("text-primary transition-opacity", item.active ? "opacity-100" : "opacity-60")}
+                aria-hidden="true"
+              >
+                {item.active ? "→" : "/"}
+              </span>
+            );
+
             return (
-              <li key={section.id}>
-                <a
-                  href={`#${section.id}`}
-                  aria-current={isActive ? "true" : undefined}
-                  className={cn(
-                    "flex items-baseline gap-2.5 py-1 font-mono text-xs tracking-[0.04em] transition-colors lg:border-b lg:border-transparent",
-                    isActive
-                      ? "text-foreground lg:border-border"
-                      : "text-muted-foreground hover:text-foreground lg:hover:border-border",
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "text-primary transition-opacity",
-                      isActive ? "opacity-100" : "opacity-60",
-                    )}
-                    aria-hidden="true"
+              <li key={item.key}>
+                {item.to.startsWith("#") ? (
+                  <a href={item.to} aria-current={item.active ? "true" : undefined} className={className}>
+                    {marker}
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.to}
+                    aria-current={item.active ? "page" : undefined}
+                    className={className}
                   >
-                    {isActive ? "→" : "/"}
-                  </span>
-                  {section.label}
-                </a>
+                    {marker}
+                    {item.label}
+                  </Link>
+                )}
               </li>
             );
           })}
