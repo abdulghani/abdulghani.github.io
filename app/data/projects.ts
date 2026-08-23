@@ -54,6 +54,20 @@ export const projects: Project[] = [
     thumbnailAlt:
       "The finance prototype on a phone: a total-spend card with a two-line chart, and income and expense tiles.",
   },
+  {
+    slug: "shop",
+    name: "Shop",
+    kind: "Interactive prototype",
+    year: "2026",
+    summary:
+      "A fashion storefront rebuilt from a three-screen design: hero carousel, categories and search that filter one catalogue, a product page with size and colour selection, and a cart that adds, decrements, deletes and checks out. Product photography is replaced with drawn SVG garments.",
+    role: "Design port, front-end",
+    stack: ["React", "TypeScript", "Tailwind", "SVG art"],
+    href: "/portfolio/shop",
+    thumbnail: "/shop.jpg",
+    thumbnailAlt:
+      "The shop prototype on a phone: a Winter Deal hero card above category chips and a sneaker rail.",
+  },
 ];
 
 export function findProject(slug: string) {

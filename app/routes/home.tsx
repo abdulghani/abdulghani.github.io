@@ -34,7 +34,7 @@ export default function Home() {
         <span>
           <span className="label block">Selected work</span>
           <span className="mt-1 block text-[0.98rem]">
-            Three interactive prototypes, rebuilt from static designs
+            Four interactive prototypes, rebuilt from static designs
           </span>
         </span>
         <ArrowRight

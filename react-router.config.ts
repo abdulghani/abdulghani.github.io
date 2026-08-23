@@ -5,5 +5,5 @@ export default {
   ssr: false,
   // Pre-render each route so the served HTML carries real markup and meta tags
   // instead of an empty shell. Anything else falls back to the SPA shell.
-  prerender: ["/", "/portfolio", "/portfolio/task-manager", "/portfolio/wallet", "/portfolio/finance"],
+  prerender: ["/", "/portfolio", "/portfolio/task-manager", "/portfolio/wallet", "/portfolio/finance", "/portfolio/shop"],
 } satisfies Config;

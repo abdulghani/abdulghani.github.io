@@ -218,3 +218,30 @@
   outline: 2px solid var(--app-accent);
   outline-offset: 2px;
 }
+
+/* Shop prototype: near-monochrome retail UI, per its source design. */
+.shop-app {
+  --app-bezel: #1b1b1d;
+  --app-bg: #ffffff;
+  --app-surface: #ffffff;
+  --app-surface-2: #f1f1f1;
+  --app-line: #e6e6e6;
+  --app-fg: #0a0a0a;
+  --app-muted: #8a8a8a;
+  --app-accent: #0a0a0a;
+  --app-accent-ink: #ffffff;
+  --app-down: #e5484d;
+
+  font-family: var(--font-display);
+  color-scheme: light;
+}
+
+.shop-app ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.shop-app :focus-visible {
+  outline: 2px solid var(--app-fg);
+  outline-offset: 2px;
+}

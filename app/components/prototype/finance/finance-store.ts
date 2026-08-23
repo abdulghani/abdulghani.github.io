@@ -178,7 +178,7 @@ export function reducer(state: State, action: Action): State {
         savedAllMonth: state.savedAllMonth + action.amount,
         transactions: [
           {
-            id: `tx-${++counter}`,
+            id: `tx-add-${++counter}`,
             name: "Transfer to savings",
             accountId: "ab",
             masked: "***456",

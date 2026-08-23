@@ -157,7 +157,7 @@ function credit(state: State, accountId: string, amount: number, title: string):
       account.id === accountId ? { ...account, balance: account.balance + amount } : account,
     ),
     movements: [
-      { id: `mv-${++counter}`, title, amount, accountId, when: "Just now" },
+      { id: `mv-add-${++counter}`, title, amount, accountId, when: "Just now" },
       ...state.movements,
     ],
   };

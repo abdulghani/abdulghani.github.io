@@ -6,4 +6,5 @@ export default [
   route("portfolio/task-manager", "routes/task-manager.tsx"),
   route("portfolio/wallet", "routes/wallet.tsx"),
   route("portfolio/finance", "routes/finance.tsx"),
+  route("portfolio/shop", "routes/shop.tsx"),
 ] satisfies RouteConfig;
