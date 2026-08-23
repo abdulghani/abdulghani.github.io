@@ -26,6 +26,20 @@ export const projects: Project[] = [
     thumbnailAlt:
       "The prototype's home screen on a phone: a week planner with Thursday selected and a high-priority task card.",
   },
+  {
+    slug: "wallet",
+    name: "Wallet",
+    kind: "Interactive prototype",
+    year: "2026",
+    summary:
+      "A mobile wallet rebuilt from a two-screen design: a card you can actually pay off, accounts that filter the activity feed, a portfolio-growth chart with switchable ranges, and a watch list. Balances reconcile — paying a card debits the account behind it.",
+    role: "Design port, front-end",
+    stack: ["React", "TypeScript", "Tailwind", "useReducer"],
+    href: "/portfolio/wallet",
+    thumbnail: "/wallet.jpg",
+    thumbnailAlt:
+      "The wallet prototype on a phone: a balance, a lime payment card and a list of accounts.",
+  },
 ];
 
 export function findProject(slug: string) {

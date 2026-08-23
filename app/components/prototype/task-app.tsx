@@ -2,7 +2,7 @@ import { useReducer } from "react";
 import { Folder, House, MessageCircle, Plus, User } from "lucide-react";
 
 import { cn } from "~/lib/utils";
-import { PhoneFrame } from "./phone-frame";
+import { PrototypeStage } from "./prototype-stage";
 import { HomeScreen } from "./screens/home-screen";
 import { NewTaskSheet } from "./screens/new-task-sheet";
 import { ActivityScreen, BoardsScreen, ProfileScreen } from "./screens/side-screens";
@@ -21,8 +21,7 @@ export function TaskApp() {
   const openTask = state.tasks.find((task) => task.id === state.openTaskId) ?? null;
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <PhoneFrame>
+    <PrototypeStage palette="task-app" onReset={() => dispatch({ type: "reset" })}>
         {openTask ? (
           <TaskDetail task={openTask} activity={state.activity} dispatch={dispatch} />
         ) : state.screen === "home" ? (
@@ -60,16 +59,7 @@ export function TaskApp() {
             ))}
           </nav>
         )}
-      </PhoneFrame>
-
-      <button
-        type="button"
-        onClick={() => dispatch({ type: "reset" })}
-        className="font-mono text-xs text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
-      >
-        Reset the prototype
-      </button>
-    </div>
+    </PrototypeStage>
   );
 }
 

@@ -163,3 +163,30 @@
   outline: 2px solid var(--app-accent);
   outline-offset: 2px;
 }
+
+/* Wallet prototype: light UI on a lime accent, per its source design. */
+.wallet-app {
+  --app-bezel: #16181a;
+  --app-bg: #f1f2f2;
+  --app-surface: #ffffff;
+  --app-surface-2: #e8eaea;
+  --app-fg: #101112;
+  --app-muted: #6d7275;
+  --app-accent: #9ef01a;
+  --app-accent-ink: #0d1a02;
+  --app-up: #16a34a;
+  --app-down: #ef4444;
+
+  font-family: var(--font-display);
+  color-scheme: light;
+}
+
+.wallet-app ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.wallet-app :focus-visible {
+  outline: 2px solid var(--app-fg);
+  outline-offset: 2px;
+}

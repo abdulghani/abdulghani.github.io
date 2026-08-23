@@ -34,7 +34,7 @@ export default function Home() {
         <span>
           <span className="label block">Selected work</span>
           <span className="mt-1 block text-[0.98rem]">
-            An interactive task-manager prototype, rebuilt from a static design
+            Two interactive prototypes, rebuilt from static designs
           </span>
         </span>
         <ArrowRight

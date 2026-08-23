@@ -1,6 +1,10 @@
 import { cn } from "~/lib/utils";
 
-/** Device bezel, status bar and home indicator around the prototype screens. */
+/**
+ * Device bezel, status bar and home indicator around the prototype screens.
+ * Colours come from --app-* tokens, so each prototype sets its own palette
+ * through the class it passes in.
+ */
 export function PhoneFrame({
   children,
   className,
@@ -11,7 +15,7 @@ export function PhoneFrame({
   return (
     <div
       className={cn(
-        "task-app relative w-[23.5rem] max-w-full shrink-0 rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
+        "relative w-[23.5rem] max-w-full shrink-0 rounded-[2.75rem] border border-[var(--app-bezel)] bg-[var(--app-bezel)] p-2.5 shadow-2xl",
         className,
       )}
     >
@@ -19,7 +23,7 @@ export function PhoneFrame({
         <StatusBar />
         <div className="relative flex min-h-0 flex-1 flex-col">{children}</div>
         <div className="flex justify-center pt-1 pb-2">
-          <span aria-hidden="true" className="h-1 w-32 rounded-full bg-white/30" />
+          <span aria-hidden="true" className="h-1 w-32 rounded-full bg-[var(--app-fg)]/25" />
         </div>
       </div>
     </div>
