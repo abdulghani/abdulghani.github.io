@@ -1,4 +1,5 @@
 import financeThumb from "~/assets/finance.jpg";
+import salahThumb from "~/assets/salah.jpg";
 import shopThumb from "~/assets/shop.jpg";
 import taskManagerThumb from "~/assets/task-manager.jpg";
 import walletThumb from "~/assets/wallet.jpg";
@@ -8,7 +9,7 @@ import walletThumb from "~/assets/wallet.jpg";
  * Thumbnails are imported rather than served from /public so Vite fingerprints
  * them — a reshot image gets a new URL instead of sitting in a stale cache.
  */
-export type ProjectSlug = "task-manager" | "wallet" | "finance" | "shop";
+export type ProjectSlug = "salah" | "task-manager" | "wallet" | "finance" | "shop";
 
 export type Project = {
   slug: ProjectSlug;
@@ -19,6 +20,13 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "salah",
+    year: "2026",
+    stack: ["React", "TypeScript", "Tailwind", "Time maths"],
+    href: "/portfolio/salah",
+    thumbnail: salahThumb,
+  },
   {
     slug: "task-manager",
     year: "2026",

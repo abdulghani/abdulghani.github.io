@@ -11,11 +11,14 @@ export function PrototypeStage({
   onReset,
   children,
   time,
+  controls,
 }: {
   palette: string;
   onReset: () => void;
   children: React.ReactNode;
   time?: string;
+  /** Prototype-level controls shown under the device, outside the app itself. */
+  controls?: React.ReactNode;
 }) {
   const { t } = useContent();
 
@@ -24,6 +27,8 @@ export function PrototypeStage({
       <PhoneFrame className={palette} time={time}>
         {children}
       </PhoneFrame>
+      {controls}
+
       <button
         type="button"
         onClick={onReset}

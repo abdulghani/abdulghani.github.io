@@ -50,7 +50,7 @@ export const id: Content = {
 
   workTeaser: {
     label: "Karya pilihan",
-    text: "Empat prototipe interaktif, dibangun ulang dari desain statis",
+    text: "Lima prototipe interaktif, dibangun ulang dari desain statis",
   },
 
   modes: { Remote: "Remote", Hybrid: "Hibrida", "On-site": "Di kantor" },
@@ -314,6 +314,31 @@ export const id: Content = {
   },
 
   projects: {
+    salah: {
+      name: "Waktu Salat",
+      summary:
+        "Aplikasi jadwal salat yang dibangun ulang dari dua layar: hitung mundur langsung menuju waktu berikutnya, daftar waktu yang menandai mana yang sedang berjalan dan mana yang berikutnya, serta lembar pengaturan yang penyedia, kota, dan metode perhitungannya benar-benar mengubah waktu di layar belakangnya.",
+      thumbnailAlt:
+        "Prototipe Waktu Salat pada ponsel: jam berjalan, bilah kemajuan Maghrib ke Isya beserta hitung mundur, dan enam waktu salat hari itu.",
+      lede: "Aplikasi jadwal salat, dibangun ulang agar jamnya benar-benar berjalan. Geser sepanjang hari dan lihat rentang waktu, hitung mundur, serta label NOW ikut berpindah; buka Pengaturan lalu ganti kota atau mazhab dan jadwalnya menanggapi.",
+      sub: "Alih desain kelima di cangkang perangkat yang sama. Jamnya berdetak sungguhan, dan penggeser di bawah ponsel adalah kendali prototipe, bukan bagian dari aplikasinya.",
+      notes: [
+        {
+          title: "Waktu adalah state-nya",
+          body: "Semua yang tampil di layar diturunkan dari satu angka — menit sejak tengah malam. Rentang waktu berjalan, bilah kemajuan, hitung mundur, dan baris mana yang ditandai NOW semuanya mengalir dari sana, jadi seisi layar tetap konsisten baik jamnya bergerak satu detik maupun melompat enam jam.",
+        },
+        {
+          title: "Pengaturan yang menepati ucapannya",
+          body: "Lembar pengaturannya menjelaskan bahwa metode dan mazhab hanya berlaku untuk waktu yang dihitung sendiri oleh aplikasi. Maka begitulah perilakunya: selama jadwal Kemenag tersimpan, keduanya tidak berpengaruh dan aplikasinya mengatakan demikian; begitu penyedia diganti ke mode luring, mazhab Hanafi memundurkan Asar tiga perempat jam.",
+        },
+        {
+          title: "Melewati tengah malam tanpa kasus khusus",
+          body: "Rentang setelah Isya menyambung ke Subuh keesokan harinya. Alih-alih dicabangkan, rentang terakhir meminjam waktu salat pertama esok hari, sehingga hitung mundurnya berperilaku sama pada pukul 23.50 seperti pada tengah hari.",
+        },
+      ],
+      attribution:
+        "Dibangun ulang dari tangkapan layar sebuah aplikasi jadwal salat sebagai latihan. Jadwalnya hanya cuplikan tetap data Kemenag untuk tiga kota, bukan umpan langsung — jangan dijadikan patokan salat.",
+    },
     "task-manager": {
       name: "Manajer tugas",
       summary:

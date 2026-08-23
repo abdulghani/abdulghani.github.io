@@ -44,7 +44,7 @@ export const en = {
 
   workTeaser: {
     label: "Selected work",
-    text: "Four interactive prototypes, rebuilt from static designs",
+    text: "Five interactive prototypes, rebuilt from static designs",
   },
 
   modes: { Remote: "Remote", Hybrid: "Hybrid", "On-site": "On-site" },
@@ -295,6 +295,31 @@ export const en = {
   },
 
   projects: {
+    salah: {
+      name: "Salah Times",
+      summary:
+        "A prayer-times app rebuilt from two screens: a live countdown to the next prayer, a timetable that marks what is happening now and next, and a settings sheet where the provider, city and calculation method actually change the times on the screen behind it.",
+      thumbnailAlt:
+        "The Salah Times prototype on a phone: a running clock, a Maghrib-to-Isha progress bar with a countdown, and the day's six prayer times.",
+      lede: "A prayer-times app, rebuilt so the clock really runs. Scrub through the day and watch the window, the countdown and the NOW badge move; open Settings and change the city or the madhab to see the timetable answer.",
+      sub: "Fifth port on the same device shell. The clock ticks in real time, and the slider under the phone is a prototype control rather than part of the app.",
+      notes: [
+        {
+          title: "Time is the state",
+          body: "Everything on the screen is derived from one number — minutes since midnight. The current window, the progress bar, the countdown and which row is marked NOW all fall out of it, so the whole screen stays consistent whether the clock ticks a second or jumps six hours.",
+        },
+        {
+          title: "Settings that mean what they say",
+          body: "The sheet explains that method and madhab only apply to times the app works out itself. So they do exactly that: with the Kemenag timetable cached they are inert and the app says so, and switching the provider to the offline fallback makes Hanafi push Asr back three quarters of an hour.",
+        },
+        {
+          title: "Wrapping midnight without special cases",
+          body: "The window after Isha runs into the next day's Fajr. Rather than branch on it, the last window borrows tomorrow's first prayer, so the countdown behaves the same at 23:50 as it does at noon.",
+        },
+      ],
+      attribution:
+        "Rebuilt from screenshots of a prayer-times app for practice. Timetables are a small fixed sample of Kemenag data for three cities, not a live feed — do not pray by it.",
+    },
     "task-manager": {
       name: "Task manager",
       summary:

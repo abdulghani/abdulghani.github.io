@@ -263,3 +263,39 @@
     zoom: 0.74;
   }
 }
+
+/* Salah Times prototype: iOS-flavoured light UI on a soft dawn gradient. */
+.salah-app {
+  --app-bezel: #1c1c1e;
+  --app-bg: #eef1ee;
+  --app-surface: #ffffff;
+  --app-surface-2: #f2f3f4;
+  --app-line: #e3e5e4;
+  --app-fg: #101413;
+  --app-muted: #8a8f8d;
+  --app-accent: #17805a;
+  --app-accent-ink: #ffffff;
+  --app-accent-soft: #dfeee7;
+  --app-gold: #b8860b;
+
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+.salah-app ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.salah-app :focus-visible {
+  outline: 2px solid var(--app-accent);
+  outline-offset: 2px;
+}
+
+/* The dawn-to-dusk wash behind the timetable. */
+.salah-sky {
+  background:
+    linear-gradient(180deg, rgba(154, 183, 168, 0.55) 0%, rgba(226, 231, 228, 0.4) 38%, rgba(247, 242, 232, 0.75) 100%),
+    var(--app-bg);
+}
