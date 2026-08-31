@@ -2,12 +2,17 @@ import { SectionHeading } from "~/components/section-heading";
 import { Badge } from "~/components/ui/badge";
 import { cn } from "~/lib/utils";
 import { roles, type RoleMeta } from "~/data/resume";
+import { tenureSince } from "~/lib/tenure";
 import { useContent } from "~/i18n/use-content";
 import type { Content } from "~/i18n/content/en";
 
 type RoleCopy = Content["roles"][keyof Content["roles"]];
 
 function Timeline({ role, copy, mode }: { role: RoleMeta; copy: RoleCopy; mode: string }) {
+  const { t } = useContent();
+  // Counted from today, so an open-ended role keeps its own tally up to date.
+  const tenure = role.start ? t.tenure(tenureSince(role.start)) : null;
+
   return (
     <article className="relative pb-10 last:pb-0">
       <span
@@ -21,8 +26,13 @@ function Timeline({ role, copy, mode }: { role: RoleMeta; copy: RoleCopy; mode: 
       />
 
       <div className="mb-1 flex flex-wrap items-center gap-2">
-        <p className="font-mono text-[0.68rem] tracking-[0.09em] uppercase text-muted-foreground">
+        <p
+          className="font-mono text-[0.68rem] tracking-[0.09em] uppercase text-muted-foreground"
+          // The prerendered HTML carries the build-date tally; the browser recomputes it.
+          suppressHydrationWarning
+        >
           {copy.period}
+          {tenure ? ` · ${tenure}` : null}
         </p>
         <Badge
           variant="outline"

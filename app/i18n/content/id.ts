@@ -55,6 +55,9 @@ export const id: Content = {
 
   modes: { Remote: "Remote", Hybrid: "Hibrida", "On-site": "Di kantor" },
 
+  tenure: ({ years, months }: { years: number; months: number }) =>
+    [years && `${years} thn`, months && `${months} bln`].filter(Boolean).join(" ") || "< 1 bln",
+
   roles: {
     osome: {
       title: "Senior Back-end Engineer",

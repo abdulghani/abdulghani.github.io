@@ -49,6 +49,12 @@ export const en = {
 
   modes: { Remote: "Remote", Hybrid: "Hybrid", "On-site": "On-site" },
 
+  /** How long a still-running role has lasted, e.g. "1 yr 3 mos". */
+  tenure: ({ years, months }: { years: number; months: number }) =>
+    [years && `${years} ${years === 1 ? "yr" : "yrs"}`, months && `${months} ${months === 1 ? "mo" : "mos"}`]
+      .filter(Boolean)
+      .join(" ") || "< 1 mo",
+
   roles: {
     osome: {
       title: "Senior Back-end Engineer",

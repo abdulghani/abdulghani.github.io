@@ -7,6 +7,8 @@ export type RoleMeta = {
   companyUrl: string;
   mode: WorkMode;
   current?: boolean;
+  /** ISO start date — only current roles need it, to count the tenure so far. */
+  start?: string;
   tags: string[];
 };
 
@@ -33,6 +35,7 @@ export const roles: RoleMeta[] = [
     companyUrl: "https://osome.com/",
     mode: "Remote",
     current: true,
+    start: "2025-05-01",
     tags: ["Node.js", "TypeScript", "Compliance", "AI-assisted dev"],
   },
   {
